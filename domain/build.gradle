@@ -7,4 +7,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$libraries.rxJava"
 
     implementation "javax.inject:javax.inject:$libraries.javax_inject"
+
+    testImplementation "junit:junit:$testLibraries.junit"
+    testImplementation "io.mockk:mockk:$testLibraries.mockk"
 }
