@@ -5,4 +5,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation "io.reactivex.rxjava2:rxjava:$libraries.rxJava"
+
+    implementation "javax.inject:javax.inject:$libraries.javax_inject"
 }

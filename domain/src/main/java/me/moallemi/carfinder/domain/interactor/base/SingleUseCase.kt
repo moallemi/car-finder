@@ -10,7 +10,7 @@ abstract class SingleUseCase<in Params, Result>(
     private val postExecutorThread: PostExecutorThread
 ) : UseCase() {
 
-    abstract fun buildSingle(param: Params): Single<Result>
+    abstract fun buildSingle(params: Params): Single<Result>
 
     fun execute(
         params: Params,
