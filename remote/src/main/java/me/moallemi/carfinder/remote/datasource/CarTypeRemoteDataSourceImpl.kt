@@ -2,8 +2,8 @@ package me.moallemi.carfinder.remote.datasource
 
 import io.reactivex.Single
 import me.moallemi.carfinder.data.datasource.CarTypeRemoteDataSource
-import me.moallemi.carfinder.data.entity.ManufacturerPagedResult
-import me.moallemi.carfinder.data.entity.StringPagedResult
+import me.moallemi.carfinder.domain.model.ManufacturerPagedResult
+import me.moallemi.carfinder.domain.model.StringPagedResult
 import me.moallemi.carfinder.remote.api.cartype.CarTypeService
 import javax.inject.Inject
 

@@ -1,14 +1,14 @@
 package me.moallemi.carfinder.remote.datasource
 
-import me.moallemi.carfinder.data.entity.ManufacturerEntity
-import me.moallemi.carfinder.data.entity.ManufacturerPagedResult
-import me.moallemi.carfinder.data.entity.StringPagedResult
+import me.moallemi.carfinder.domain.model.Manufacturer
+import me.moallemi.carfinder.domain.model.ManufacturerPagedResult
+import me.moallemi.carfinder.domain.model.StringPagedResult
 import me.moallemi.carfinder.remote.dto.PagedResponseDto
 import me.moallemi.carfinder.remote.dto.ResponseDto
 
 fun PagedResponseDto.toManufacturerPagedResult() = ManufacturerPagedResult(
     totalPageCount = totalPageCount,
-    items = items.map { ManufacturerEntity(it.key, it.value) }
+    items = items.map { Manufacturer(it.key, it.value) }
 )
 
 fun PagedResponseDto.toStringPagedResult() = StringPagedResult(

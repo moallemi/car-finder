@@ -1,10 +1,10 @@
-package me.moallemi.carfinder.data.datasource
+package me.moallemi.carfinder.domain.repository
 
 import io.reactivex.Single
 import me.moallemi.carfinder.domain.model.ManufacturerPagedResult
 import me.moallemi.carfinder.domain.model.StringPagedResult
 
-interface CarTypeRemoteDataSource {
+interface CarTypeRepository {
 
     fun getManufacturers(page: Int, pageSize: Int): Single<ManufacturerPagedResult>
 

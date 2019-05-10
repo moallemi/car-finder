@@ -1,4 +1,4 @@
-package me.moallemi.carfinder.data.entity
+package me.moallemi.carfinder.domain.model
 
 interface PagedResult<T> {
     val totalPageCount: Int

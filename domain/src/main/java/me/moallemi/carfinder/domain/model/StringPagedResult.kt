@@ -1,4 +1,4 @@
-package me.moallemi.carfinder.data.entity
+package me.moallemi.carfinder.domain.model
 
 data class StringPagedResult(
     override val totalPageCount: Int,
