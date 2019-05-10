@@ -4,11 +4,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    implementation project(':data')
+
     implementation "com.squareup.retrofit2:retrofit:$libraries.retrofit"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$libraries.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$libraries.retrofit"
 
     implementation "com.squareup.okhttp3:okhttp:$libraries.okHttp"
+
+    implementation "javax.inject:javax.inject:$libraries.javax_inject"
 
     testImplementation "junit:junit:$testLibraries.junit"
     testImplementation "io.mockk:mockk:$testLibraries.mockk"
