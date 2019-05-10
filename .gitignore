@@ -14,3 +14,4 @@
 .idea
 remote/build
 data/build
+domain/build
