@@ -27,7 +27,7 @@ class CarTypeRemoteDataSourceImpl @Inject constructor(private val carTypeService
     override fun getBuiltDates(manufacturer: String, mainType: String): Single<List<String>> {
         return carTypeService.getBuiltDates(manufacturer, mainType)
             .map { responseDto ->
-                responseDto.items.keys.toList()
+                responseDto.toList()
             }
     }
 }
