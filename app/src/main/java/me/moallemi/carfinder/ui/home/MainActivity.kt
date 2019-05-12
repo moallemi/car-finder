@@ -3,6 +3,7 @@ package me.moallemi.carfinder.ui.home
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import me.moallemi.carfinder.R
+import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerBrowseFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.contentFrame, HomeFragment.newInstance())
+            ?.replace(R.id.contentFrame, ManufacturerBrowseFragment.newInstance())
             ?.commit()
     }
 }

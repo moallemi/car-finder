@@ -7,14 +7,20 @@ import me.moallemi.carfinder.app.CarFinderApp
 import me.moallemi.carfinder.di.module.AppModule
 import me.moallemi.carfinder.di.module.HomeModule
 import me.moallemi.carfinder.di.module.ViewModelFactoryModule
+import me.moallemi.carfinder.di.module.NetworkModule
+import me.moallemi.carfinder.di.module.ApiModule
+import me.moallemi.carfinder.di.module.ManufacturerModule
 import me.moallemi.carfinder.di.scope.AppScope
 
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
         AppModule::class,
+        NetworkModule::class,
+        ApiModule::class,
         ViewModelFactoryModule::class,
-        HomeModule::class
+        HomeModule::class,
+        ManufacturerModule::class
     ]
 )
 @AppScope
