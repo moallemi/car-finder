@@ -14,7 +14,13 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField("String", "API_ENDPOINT", "\"${carfinder_endpoint}\"")
+            buildConfigField("String", "API_KEY", "\"${carfinder_api_key}\"")
+        }
         release {
+            buildConfigField("String", "API_ENDPOINT", "\"${carfinder_endpoint}\"")
+            buildConfigField("String", "API_KEY", "\"${carfinder_api_key}\"")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -26,11 +32,14 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     implementation project(':domain')
+    implementation project(':data')
+    implementation project(':remote')
 
     implementation "androidx.appcompat:appcompat:$libraries.appCompat"
     implementation "com.google.android.material:material:$libraries.materialDesign"
     implementation "androidx.core:core-ktx:$libraries.coreKtx"
     implementation "androidx.constraintlayout:constraintlayout:$libraries.constraintLayout"
+    implementation "androidx.lifecycle:lifecycle-extensions:$libraries.lifecycle"
 
     implementation "com.google.dagger:dagger:$libraries.dagger"
     kapt "com.google.dagger:dagger-compiler:$libraries.dagger"

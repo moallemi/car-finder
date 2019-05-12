@@ -6,11 +6,12 @@ dependencies {
 
     implementation project(':data')
 
-    implementation "com.squareup.retrofit2:retrofit:$libraries.retrofit"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$libraries.retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$libraries.retrofit"
+    api "com.squareup.retrofit2:retrofit:$libraries.retrofit"
+    api "com.squareup.retrofit2:adapter-rxjava2:$libraries.retrofit"
+    api "com.squareup.retrofit2:converter-gson:$libraries.retrofit"
 
-    implementation "com.squareup.okhttp3:okhttp:$libraries.okHttp"
+    api "com.squareup.okhttp3:okhttp:$libraries.okHttp"
+    api "com.squareup.okhttp3:logging-interceptor:$libraries.okHttp"
 
     implementation "javax.inject:javax.inject:$libraries.javax_inject"
 
