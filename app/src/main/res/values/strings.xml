@@ -4,4 +4,5 @@
     <string name="select_main_type">Select main type</string>
     <string name="select_build_date">Select build date</string>
     <string name="data_not_found">Data not found</string>
+    <string name="no_internet">No Internet</string>
 </resources>
