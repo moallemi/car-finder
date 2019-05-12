@@ -19,7 +19,7 @@ class GetManufacturersUseCase @Inject constructor(
     }
 
     data class Params(
-        val page: Int,
-        val pageSize: Int
+        var page: Int,
+        var pageSize: Int
     )
 }

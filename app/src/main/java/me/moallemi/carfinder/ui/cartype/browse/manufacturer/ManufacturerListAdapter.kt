@@ -4,33 +4,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import me.moallemi.carfinder.R
-import me.moallemi.carfinder.domain.model.Manufacturer
+import me.moallemi.carfinder.model.ManufacturerItem
+import me.moallemi.carfinder.ui.base.recycler.BaseRecyclerAdapter
+import me.moallemi.carfinder.ui.base.recycler.BaseRecyclerViewHolder
 
-class ManufacturerListAdapter : RecyclerView.Adapter<ManufacturerListAdapter.ManufacturerViewHolder>() {
+class ManufacturerListAdapter : BaseRecyclerAdapter<ManufacturerItem>() {
 
-    var items = mutableListOf<Manufacturer>()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ManufacturerViewHolder {
+    override fun makeViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerViewHolder<ManufacturerItem>? {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_manufacturer_item, parent, false)
         return ManufacturerViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
-
-    override fun onBindViewHolder(holder: ManufacturerViewHolder, position: Int) {
-        holder.bind(items[position])
-    }
-
-    class ManufacturerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+    class ManufacturerViewHolder(itemView: View) : BaseRecyclerViewHolder<ManufacturerItem>(itemView) {
         private val title = itemView.findViewById<TextView>(R.id.title)
 
-        fun bind(manufacturer: Manufacturer) {
-            title.text = manufacturer.name
+        override fun bind(item: ManufacturerItem) {
+            title.text = item.name
         }
     }
 }
