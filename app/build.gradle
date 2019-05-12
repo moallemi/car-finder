@@ -24,10 +24,14 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
+    implementation project(':domain')
+
     implementation "androidx.appcompat:appcompat:$libraries.appCompat"
     implementation "com.google.android.material:material:$libraries.materialDesign"
     implementation "androidx.core:core-ktx:$libraries.coreKtx"
     implementation "androidx.constraintlayout:constraintlayout:$libraries.constraintLayout"
+
+    implementation "io.reactivex.rxjava2:rxandroid:$libraries.rxAndroid"
 
     testImplementation "junit:junit:$testLibraries.junit"
     androidTestImplementation "androidx.test:runner:$testLibraries.androidXTestRunner"

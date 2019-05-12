@@ -18,8 +18,8 @@ abstract class SingleUseCase<in Params, Result>(
         failure: (Throwable) -> Unit
     ) {
         buildSingle(params)
-            .observeOn(useCaseExecutorThread.scheduler)
-            .subscribeOn(postExecutorThread.scheduler)
+            .subscribeOn(useCaseExecutorThread.scheduler)
+            .observeOn(postExecutorThread.scheduler)
             .subscribeWith(SingleObserver(success, failure))
             .also { observer ->
                 addDisposable(observer)
