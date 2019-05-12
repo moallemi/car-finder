@@ -3,4 +3,5 @@
     <string name="select_manufacturer">Select manufacturer</string>
     <string name="select_main_type">Select main type</string>
     <string name="select_build_date">Select build date</string>
+    <string name="data_not_found">Data not found</string>
 </resources>
