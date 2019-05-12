@@ -61,11 +61,27 @@ abstract class BaseRecyclerFragment<T : RecyclerData, Params, VM : BaseRecyclerV
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        viewModel.onSaveState(outState)
+    }
+
+    override fun onRestoreState(bundle: Bundle) {
+        super.onRestoreState(bundle)
+
+        viewModel.onRestoreState(bundle)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         viewModel = makeViewModel().apply {
             observe(items, ::handleResourceState)
+        }
+
+        if (savedInstanceState != null) {
+            onRestoreState(savedInstanceState)
         }
 
         viewModel.load(getParams())

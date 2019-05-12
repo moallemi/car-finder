@@ -1,5 +1,6 @@
 package me.moallemi.carfinder.ui.base.recycler
 
+import android.os.Bundle
 import androidx.lifecycle.MediatorLiveData
 import me.moallemi.carfinder.model.RecyclerData
 import me.moallemi.carfinder.model.Resource
@@ -62,5 +63,27 @@ abstract class BaseRecyclerViewModel<T : RecyclerData, Params> : BaseViewModel()
             _items.value = resource
             this.allItems = resource
         }
+    }
+
+    override fun onSaveState(bundle: Bundle) {
+        super.onSaveState(bundle)
+
+        bundle.putSerializable(KEY_SAVED_DATA, allItems)
+        bundle.putBoolean(KEY_SAVED_END_OF_LIST, endOfList)
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun onRestoreState(bundle: Bundle) {
+        super.onRestoreState(bundle)
+
+        allItems = bundle.getSerializable(KEY_SAVED_DATA) as Resource<List<T>>?
+        items.value = allItems
+
+        endOfList = bundle.getBoolean(KEY_SAVED_END_OF_LIST)
+    }
+
+    companion object {
+        private const val KEY_SAVED_DATA = "savedData"
+        private const val KEY_SAVED_END_OF_LIST = "savedEndOfList"
     }
 }
