@@ -22,8 +22,12 @@ class MainTypeViewModel @Inject constructor(private val getMainTypesUseCase: Get
     }
 
     private fun success(result: StringPagedResult) {
+        val currentItemSize = allItems?.data?.size ?: 0
+
         handleSuccess(
-            result.items.map { title -> MainTypeItem(title) }
+            result.items.mapIndexed { index: Int, title ->
+                MainTypeItem(title, (currentItemSize + index) % 2 == 0)
+            }
         )
     }
 }
