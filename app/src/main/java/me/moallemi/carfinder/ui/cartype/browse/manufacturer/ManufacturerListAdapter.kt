@@ -21,6 +21,7 @@ class ManufacturerListAdapter : BaseRecyclerAdapter<ManufacturerItem>() {
 
         override fun bind(item: ManufacturerItem) {
             title.text = item.name
+            itemView.setOnClickListener { onItemClickListener?.onItemClick(item) }
         }
     }
 }
