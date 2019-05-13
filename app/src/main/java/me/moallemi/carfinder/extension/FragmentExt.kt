@@ -16,17 +16,16 @@ inline fun <reified T : ViewModel> Fragment.createViewModel(
 }
 
 inline fun <reified T : ViewModel> Fragment.createSharedViewModel(
-    factory: ViewModelProvider.Factory,
     body: T.() -> Unit = {}
 ): T {
-    val viewModel = ViewModelProviders.of(requireActivity(), factory)[T::class.java]
+    val viewModel = ViewModelProviders.of(requireActivity())[T::class.java]
     viewModel.body()
     return viewModel
 }
 
 fun Fragment.navigateTo(fragment: Fragment) {
     fragmentManager?.beginTransaction()
-        ?.replace(R.id.contentFrame, fragment)
+        ?.add(R.id.contentFrame, fragment)
         ?.addToBackStack(null)
         ?.commit()
 }

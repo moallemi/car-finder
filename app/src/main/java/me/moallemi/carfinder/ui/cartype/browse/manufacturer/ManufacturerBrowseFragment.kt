@@ -24,7 +24,7 @@ class ManufacturerBrowseFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        sharedViewModel = createSharedViewModel(viewModelFactory)
+        sharedViewModel = createSharedViewModel()
     }
 
     override fun makeViewModel(): ManufacturerViewModel {

@@ -9,7 +9,7 @@ import me.moallemi.carfinder.ui.base.BaseViewModel
 import javax.inject.Inject
 
 /**
- * Shares data between HomeFragment and carTypeFragments (Manufacturer, MainType and BuildDates Fragments)
+ * Shares data between SummaryFragment and carTypeFragments (Manufacturer, MainType and BuildDates Fragments)
  */
 class SharedViewModel @Inject constructor() : BaseViewModel() {
 

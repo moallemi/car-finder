@@ -26,7 +26,7 @@ class MainTypeBrowseFragment : BaseRecyclerFragment<MainTypeItem, GetMainTypesUs
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        sharedViewModel = createSharedViewModel(viewModelFactory)
+        sharedViewModel = createSharedViewModel()
     }
 
     override fun makeViewModel(): MainTypeViewModel {
