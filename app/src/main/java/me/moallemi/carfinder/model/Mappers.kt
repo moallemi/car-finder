@@ -2,7 +2,8 @@ package me.moallemi.carfinder.model
 
 import me.moallemi.carfinder.domain.model.Manufacturer
 
-fun Manufacturer.toManufactureItem() = ManufacturerItem(
+fun Manufacturer.toManufactureItem(isEven: Boolean) = ManufacturerItem(
     code = code,
-    name = name
+    name = name,
+    isEven = isEven
 )

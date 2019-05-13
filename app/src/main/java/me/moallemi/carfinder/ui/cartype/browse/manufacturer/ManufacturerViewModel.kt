@@ -1,6 +1,7 @@
 package me.moallemi.carfinder.ui.cartype.browse.manufacturer
 
 import me.moallemi.carfinder.domain.interactor.GetManufacturersUseCase
+import me.moallemi.carfinder.domain.model.Manufacturer
 import me.moallemi.carfinder.domain.model.ManufacturerPagedResult
 import me.moallemi.carfinder.model.ManufacturerItem
 import me.moallemi.carfinder.model.toManufactureItem
@@ -23,8 +24,12 @@ class ManufacturerViewModel @Inject constructor(private val getManufacturersUseC
     }
 
     private fun success(result: ManufacturerPagedResult) {
+        val currentItemSize = allItems?.data?.size ?: 0
+
         handleSuccess(
-            result.items.map { manufacturer -> manufacturer.toManufactureItem() }
+            result.items.mapIndexed { index: Int, manufacturer: Manufacturer ->
+                manufacturer.toManufactureItem((currentItemSize + index) % 2 == 0)
+            }
         )
     }
 }

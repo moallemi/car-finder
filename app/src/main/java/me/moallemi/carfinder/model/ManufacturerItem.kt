@@ -4,8 +4,9 @@ import me.moallemi.carfinder.R
 
 data class ManufacturerItem(
     val code: String,
-    val name: String
-) : RecyclerData {
+    val name: String,
+    override val isEven: Boolean
+) : RecyclerData, RowType {
     override val viewType: Int
         get() = R.layout.item_manufacturer_item
 }
