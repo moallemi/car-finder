@@ -45,4 +45,12 @@
         <item name="android:textSize">17sp</item>
     </style>
 
+    <style name="BuiltDateSelectableItem">
+        <item name="android:background">?selectableItemBackground</item>
+        <item name="android:drawableStart">@drawable/ic_year</item>
+        <item name="android:drawableLeft">@drawable/ic_year</item>
+        <item name="android:drawablePadding">@dimen/default_padding</item>
+        <item name="android:padding">@dimen/default_padding</item>
+    </style>
+
 </resources>

@@ -16,6 +16,14 @@ class BuiltDateListAdapter : BaseRecyclerAdapter<BuiltDateItem>() {
         return BuiltDateViewHolder(view)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return if (position % 2 == 0) {
+            R.layout.item_built_date_even_item
+        } else {
+            R.layout.item_built_date_odd_item
+        }
+    }
+
     class BuiltDateViewHolder(itemView: View) : BaseRecyclerViewHolder<BuiltDateItem>(itemView) {
 
         private val year = itemView.findViewById<AppCompatTextView>(R.id.year)
