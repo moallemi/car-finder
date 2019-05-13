@@ -8,4 +8,29 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="FeatureHeader">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/default_padding</item>
+        <item name="android:paddingLeft">@dimen/default_padding</item>
+        <item name="android:paddingTop">@dimen/default_padding</item>
+        <item name="android:paddingEnd">@dimen/default_padding</item>
+        <item name="android:paddingRight">@dimen/default_padding</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FeatureTitle">
+        <item name="android:padding">@dimen/default_padding</item>
+    </style>
+
+    <style name="FeatureSelector">
+        <item name="android:background">?selectableItemBackground</item>
+    </style>
+
+    <style name="FeatureArrow">
+        <item name="android:layout_marginEnd">@dimen/default_margin</item>
+        <item name="android:layout_marginRight">@dimen/default_margin</item>
+    </style>
+
 </resources>

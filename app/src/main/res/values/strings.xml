@@ -7,4 +7,5 @@
     <string name="no_internet">No Internet</string>
     <string name="manufacturer">Manufacturer</string>
     <string name="select">Select</string>
+    <string name="main_type">Main Type</string>
 </resources>

@@ -11,6 +11,8 @@ import me.moallemi.carfinder.extension.navigateTo
 import me.moallemi.carfinder.extension.observe
 import me.moallemi.carfinder.ui.SharedViewModel
 import me.moallemi.carfinder.ui.base.BaseFragment
+import me.moallemi.carfinder.ui.cartype.browse.maintype.MainTypeBrowseFragment
+import me.moallemi.carfinder.ui.cartype.browse.maintype.MainTypeBrowseFragmentArgs
 import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerBrowseFragment
 
 class HomeFragment : BaseFragment() {
@@ -27,10 +29,21 @@ class HomeFragment : BaseFragment() {
         selectManufacturer.setOnClickListener {
             navigateTo(ManufacturerBrowseFragment.newInstance())
         }
+        selectMainType.setOnClickListener {
+            // TODO get correct manufacturer
+            navigateTo(
+                MainTypeBrowseFragment.newInstance(
+                    MainTypeBrowseFragmentArgs(manufacturer.text.toString())
+                )
+            )
+        }
 
         sharedViewModel = createSharedViewModel(viewModelFactory) {
             observe(manufacturerItem) {
                 manufacturer.text = it?.name
+            }
+            observe(mainTypeItem) {
+                mainType.text = it?.name
             }
         }
     }

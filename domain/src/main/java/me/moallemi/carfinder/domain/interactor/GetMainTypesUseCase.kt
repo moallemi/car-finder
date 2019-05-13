@@ -20,7 +20,7 @@ class GetMainTypesUseCase @Inject constructor(
 
     data class Params(
         val manufacturer: String,
-        val page: Int,
+        var page: Int,
         val pageSize: Int
     )
 }

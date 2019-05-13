@@ -7,6 +7,7 @@ import me.moallemi.carfinder.app.CarFinderApp
 import me.moallemi.carfinder.di.module.ApiModule
 import me.moallemi.carfinder.di.module.AppModule
 import me.moallemi.carfinder.di.module.HomeModule
+import me.moallemi.carfinder.di.module.MainTypeModule
 import me.moallemi.carfinder.di.module.ManufacturerModule
 import me.moallemi.carfinder.di.module.NetworkModule
 import me.moallemi.carfinder.di.module.SharedViewModelModule
@@ -22,6 +23,7 @@ import me.moallemi.carfinder.di.scope.AppScope
         ViewModelFactoryModule::class,
         HomeModule::class,
         ManufacturerModule::class,
+        MainTypeModule::class,
         SharedViewModelModule::class
     ]
 )
