@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import me.moallemi.carfinder.R
 
 inline fun <reified T : ViewModel> Fragment.createViewModel(
     factory: ViewModelProvider.Factory,
@@ -12,4 +13,20 @@ inline fun <reified T : ViewModel> Fragment.createViewModel(
     val viewModel = ViewModelProviders.of(this, factory)[T::class.java]
     viewModel.body()
     return viewModel
+}
+
+inline fun <reified T : ViewModel> Fragment.createSharedViewModel(
+    factory: ViewModelProvider.Factory,
+    body: T.() -> Unit = {}
+): T {
+    val viewModel = ViewModelProviders.of(requireActivity(), factory)[T::class.java]
+    viewModel.body()
+    return viewModel
+}
+
+fun Fragment.navigateTo(fragment: Fragment) {
+    fragmentManager?.beginTransaction()
+        ?.replace(R.id.contentFrame, fragment)
+        ?.addToBackStack(null)
+        ?.commit()
 }
