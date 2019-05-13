@@ -6,6 +6,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 import me.moallemi.carfinder.app.CarFinderApp
 import me.moallemi.carfinder.di.module.ApiModule
 import me.moallemi.carfinder.di.module.AppModule
+import me.moallemi.carfinder.di.module.BuiltDateModule
 import me.moallemi.carfinder.di.module.HomeModule
 import me.moallemi.carfinder.di.module.MainTypeModule
 import me.moallemi.carfinder.di.module.ManufacturerModule
@@ -24,6 +25,7 @@ import me.moallemi.carfinder.di.scope.AppScope
         HomeModule::class,
         ManufacturerModule::class,
         MainTypeModule::class,
+        BuiltDateModule::class,
         SharedViewModelModule::class
     ]
 )

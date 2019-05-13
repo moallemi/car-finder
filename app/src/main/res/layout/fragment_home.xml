@@ -81,4 +81,42 @@
         app:layout_constraintTop_toTopOf="@id/selectMainType"
         app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/builtDateTitle"
+        style="@style/FeatureHeader"
+        android:layout_width="0dp"
+        android:text="@string/built_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/selectMainType" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/builtDate"
+        style="@style/FeatureTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/select"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/builtDateTitle" />
+
+    <View
+        android:id="@+id/selectBuiltDate"
+        style="@style/FeatureSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/builtDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/builtDateTitle" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        style="@style/FeatureArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/selectBuiltDate"
+        app:layout_constraintEnd_toEndOf="@id/selectBuiltDate"
+        app:layout_constraintTop_toTopOf="@id/selectBuiltDate"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

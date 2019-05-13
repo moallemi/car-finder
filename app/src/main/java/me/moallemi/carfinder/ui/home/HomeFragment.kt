@@ -11,6 +11,8 @@ import me.moallemi.carfinder.extension.navigateTo
 import me.moallemi.carfinder.extension.observe
 import me.moallemi.carfinder.ui.SharedViewModel
 import me.moallemi.carfinder.ui.base.BaseFragment
+import me.moallemi.carfinder.ui.cartype.browse.builtdate.BuiltDateBrowseFragment
+import me.moallemi.carfinder.ui.cartype.browse.builtdate.BuiltDateBrowseFragmentArgs
 import me.moallemi.carfinder.ui.cartype.browse.maintype.MainTypeBrowseFragment
 import me.moallemi.carfinder.ui.cartype.browse.maintype.MainTypeBrowseFragmentArgs
 import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerBrowseFragment
@@ -33,7 +35,15 @@ class HomeFragment : BaseFragment() {
             // TODO get correct manufacturer
             navigateTo(
                 MainTypeBrowseFragment.newInstance(
-                    MainTypeBrowseFragmentArgs(manufacturer.text.toString())
+                    MainTypeBrowseFragmentArgs("130")
+                )
+            )
+        }
+        selectBuiltDate.setOnClickListener {
+            // TODO get correct params
+            navigateTo(
+                BuiltDateBrowseFragment.newInstance(
+                    BuiltDateBrowseFragmentArgs("130", "X1")
                 )
             )
         }
@@ -44,6 +54,9 @@ class HomeFragment : BaseFragment() {
             }
             observe(mainTypeItem) {
                 mainType.text = it?.name
+            }
+            observe(builtDateItem) {
+                builtDate.text = it?.year
             }
         }
     }
