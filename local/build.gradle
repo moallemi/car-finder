@@ -26,4 +26,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "androidx.room:room-runtime:$libraries.room"
+    kapt "androidx.room:room-compiler:$libraries.room"
+    implementation "androidx.room:room-ktx:$libraries.room"
+    implementation "androidx.room:room-rxjava2:$libraries.room"
+
+    testImplementation "androidx.room:room-testing:$libraries.room"
 }
