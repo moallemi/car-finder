@@ -15,3 +15,4 @@
 remote/build
 data/build
 domain/build
+local/build
