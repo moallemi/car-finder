@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import me.moallemi.carfinder.R
 import me.moallemi.carfinder.extension.inTransaction
-import me.moallemi.carfinder.ui.summary.SummaryFragment
+import me.moallemi.carfinder.ui.cartype.search.manufacturer.ManufacturerSearchFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         savedInstanceState ?: supportFragmentManager?.inTransaction {
-            replace(R.id.contentFrame, SummaryFragment.newInstance())
+            replace(R.id.contentFrame, ManufacturerSearchFragment.newInstance())
         }
     }
 }

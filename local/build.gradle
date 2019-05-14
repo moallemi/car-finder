@@ -29,7 +29,7 @@ dependencies {
 
     implementation project(":data")
 
-    implementation "androidx.room:room-runtime:$libraries.room"
+    api "androidx.room:room-runtime:$libraries.room"
     kapt "androidx.room:room-compiler:$libraries.room"
     implementation "androidx.room:room-ktx:$libraries.room"
     implementation "androidx.room:room-rxjava2:$libraries.room"

@@ -1,16 +1,17 @@
-package me.moallemi.carfinder.ui.cartype.browse.manufacturer
+package me.moallemi.carfinder.ui.cartype.search.manufacturer
 
 import android.os.Bundle
-import me.moallemi.carfinder.domain.interactor.GetManufacturersUseCase
+import me.moallemi.carfinder.domain.interactor.GetAllManufacturersUseCase
 import me.moallemi.carfinder.extension.createSharedViewModel
 import me.moallemi.carfinder.extension.createViewModel
 import me.moallemi.carfinder.model.ManufacturerItem
 import me.moallemi.carfinder.ui.SharedViewModel
 import me.moallemi.carfinder.ui.base.listener.OnRecyclerItemClickListener
 import me.moallemi.carfinder.ui.base.recycler.BaseRecyclerFragment
+import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerListAdapter
 
-class ManufacturerBrowseFragment :
-    BaseRecyclerFragment<ManufacturerItem, GetManufacturersUseCase.Params, ManufacturerListViewModel>(),
+class ManufacturerSearchFragment :
+    BaseRecyclerFragment<ManufacturerItem, GetAllManufacturersUseCase.Params, ManufacturerSearchViewModel>(),
     OnRecyclerItemClickListener<ManufacturerItem> {
 
     private lateinit var sharedViewModel: SharedViewModel
@@ -19,6 +20,7 @@ class ManufacturerBrowseFragment :
 
     init {
         recyclerItemClickListener = this
+        isEndless = false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +29,12 @@ class ManufacturerBrowseFragment :
         sharedViewModel = createSharedViewModel()
     }
 
-    override fun makeViewModel(): ManufacturerListViewModel {
+    override fun makeViewModel(): ManufacturerSearchViewModel {
         return createViewModel(viewModelFactory)
     }
 
-    override fun getParams(): GetManufacturersUseCase.Params {
-        return GetManufacturersUseCase.Params(0, 15)
+    override fun getParams(): GetAllManufacturersUseCase.Params {
+        return GetAllManufacturersUseCase.Params()
     }
 
     override fun onItemClick(item: ManufacturerItem) {
@@ -41,6 +43,6 @@ class ManufacturerBrowseFragment :
     }
 
     companion object {
-        fun newInstance() = ManufacturerBrowseFragment()
+        fun newInstance() = ManufacturerSearchFragment()
     }
 }

@@ -5,13 +5,17 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
+import me.moallemi.carfinder.data.datasource.CarTypeLocalDataSource
 import me.moallemi.carfinder.data.datasource.CarTypeRemoteDataSource
 import me.moallemi.carfinder.data.repository.CarTypeRepositoryImpl
 import me.moallemi.carfinder.di.annotation.ViewModelKey
 import me.moallemi.carfinder.domain.repository.CarTypeRepository
+import me.moallemi.carfinder.local.datasource.CarTypeLocalDataSourceImpl
 import me.moallemi.carfinder.remote.datasource.CarTypeRemoteDataSourceImpl
 import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerBrowseFragment
-import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerViewModel
+import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerListViewModel
+import me.moallemi.carfinder.ui.cartype.search.manufacturer.ManufacturerSearchFragment
+import me.moallemi.carfinder.ui.cartype.search.manufacturer.ManufacturerSearchViewModel
 
 @Module
 abstract class ManufacturerModule {
@@ -21,8 +25,16 @@ abstract class ManufacturerModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ManufacturerViewModel::class)
-    abstract fun bindManufacturerViewModel(manufacturerViewModel: ManufacturerViewModel): ViewModel
+    @ViewModelKey(ManufacturerListViewModel::class)
+    abstract fun bindManufacturerListViewModel(manufacturerListViewModel: ManufacturerListViewModel): ViewModel
+
+    @ContributesAndroidInjector
+    internal abstract fun manufacturerSearchFragment(): ManufacturerSearchFragment
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ManufacturerSearchViewModel::class)
+    abstract fun bindManufacturerSearchViewModel(manufacturerSearchViewModel: ManufacturerSearchViewModel): ViewModel
 
     @Binds
     abstract fun bindCarTypeRepository(carTypeRepositoryImpl: CarTypeRepositoryImpl): CarTypeRepository
@@ -31,4 +43,9 @@ abstract class ManufacturerModule {
     abstract fun binCarTypeRemoteDataSource(
         carTypeRemoteDataSourceImpl: CarTypeRemoteDataSourceImpl
     ): CarTypeRemoteDataSource
+
+    @Binds
+    abstract fun binCarTypeLocalDataSource(
+        carTypeLocalDataSourceImpl: CarTypeLocalDataSourceImpl
+    ): CarTypeLocalDataSource
 }

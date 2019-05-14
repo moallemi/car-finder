@@ -8,7 +8,7 @@ import me.moallemi.carfinder.model.toManufactureItem
 import me.moallemi.carfinder.ui.base.recycler.BaseRecyclerViewModel
 import javax.inject.Inject
 
-class ManufacturerViewModel @Inject constructor(private val getManufacturersUseCase: GetManufacturersUseCase) :
+class ManufacturerListViewModel @Inject constructor(private val getManufacturersUseCase: GetManufacturersUseCase) :
     BaseRecyclerViewModel<ManufacturerItem, GetManufacturersUseCase.Params>() {
 
     init {
@@ -17,7 +17,7 @@ class ManufacturerViewModel @Inject constructor(private val getManufacturersUseC
 
     override fun makeData(params: GetManufacturersUseCase.Params) {
         getManufacturersUseCase.execute(
-            params.apply { this.page = this@ManufacturerViewModel.page },
+            params.apply { this.page = this@ManufacturerListViewModel.page },
             ::success,
             ::error
         )
