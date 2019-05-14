@@ -32,5 +32,10 @@ dependencies {
     implementation "androidx.room:room-ktx:$libraries.room"
     implementation "androidx.room:room-rxjava2:$libraries.room"
 
-    testImplementation "androidx.room:room-testing:$libraries.room"
+    androidTestImplementation "junit:junit:$testLibraries.junit"
+    androidTestImplementation "androidx.test:core:$testLibraries.androidXTestCore"
+    androidTestImplementation "androidx.arch.core:core-testing:$testLibraries.androidxCoreTesting"
+    androidTestImplementation "androidx.room:room-testing:$libraries.room"
+    androidTestImplementation "androidx.test:runner:$testLibraries.androidXTestRunner"
+    androidTestImplementation "androidx.test.ext:junit:$testLibraries.androidXTestCore"
 }
