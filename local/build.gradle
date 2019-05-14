@@ -27,10 +27,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(":data")
+
     implementation "androidx.room:room-runtime:$libraries.room"
     kapt "androidx.room:room-compiler:$libraries.room"
     implementation "androidx.room:room-ktx:$libraries.room"
     implementation "androidx.room:room-rxjava2:$libraries.room"
+
+    implementation "javax.inject:javax.inject:$libraries.javax_inject"
 
     androidTestImplementation "junit:junit:$testLibraries.junit"
     androidTestImplementation "androidx.test:core:$testLibraries.androidXTestCore"

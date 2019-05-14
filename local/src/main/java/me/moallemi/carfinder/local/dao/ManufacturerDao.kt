@@ -5,14 +5,14 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
-import io.reactivex.Flowable
+import io.reactivex.Observable
 import me.moallemi.carfinder.local.entity.LocalManufacturer
 
 @Dao
 interface ManufacturerDao {
 
     @Query("SELECT * FROM manufacturer ORDER BY name ASC")
-    fun all(): Flowable<List<LocalManufacturer>>
+    fun all(): Observable<List<LocalManufacturer>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg items: LocalManufacturer)
