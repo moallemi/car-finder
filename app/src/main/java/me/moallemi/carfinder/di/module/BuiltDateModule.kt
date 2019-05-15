@@ -8,6 +8,8 @@ import dagger.multibindings.IntoMap
 import me.moallemi.carfinder.di.annotation.ViewModelKey
 import me.moallemi.carfinder.ui.cartype.browse.builtdate.BuiltDateBrowseFragment
 import me.moallemi.carfinder.ui.cartype.browse.builtdate.BuiltDateViewModel
+import me.moallemi.carfinder.ui.cartype.search.builtdate.BuiltDateSearchFragment
+import me.moallemi.carfinder.ui.cartype.search.builtdate.BuiltDateSearchViewModel
 
 @Module
 abstract class BuiltDateModule {
@@ -18,5 +20,13 @@ abstract class BuiltDateModule {
     @Binds
     @IntoMap
     @ViewModelKey(BuiltDateViewModel::class)
-    abstract fun bindManufacturerViewModel(builtDateViewModel: BuiltDateViewModel): ViewModel
+    abstract fun bindBuiltDateViewModel(builtDateViewModel: BuiltDateViewModel): ViewModel
+
+    @ContributesAndroidInjector
+    internal abstract fun builtDateSearchFragment(): BuiltDateSearchFragment
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BuiltDateSearchViewModel::class)
+    abstract fun bindBuiltDateSearchViewModel(builtDateSearchViewModel: BuiltDateSearchViewModel): ViewModel
 }

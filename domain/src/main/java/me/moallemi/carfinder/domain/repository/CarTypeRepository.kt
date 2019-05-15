@@ -24,4 +24,8 @@ interface CarTypeRepository {
 
     // BuiltDates
     fun getBuiltDates(manufacturer: String, mainType: String): Single<List<String>>
+
+    fun getBuiltDatesStream(manufacturerCode: String, mainType: String): Observable<List<String>>
+
+    fun storeBuiltDates(manufacturerCode: String, mainType: String, items: List<String>)
 }

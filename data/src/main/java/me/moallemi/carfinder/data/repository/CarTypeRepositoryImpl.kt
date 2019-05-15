@@ -42,4 +42,12 @@ class CarTypeRepositoryImpl @Inject constructor(
     override fun getBuiltDates(manufacturer: String, mainType: String): Single<List<String>> {
         return carTypeRemoteDataSource.getBuiltDates(manufacturer, mainType)
     }
+
+    override fun getBuiltDatesStream(manufacturerCode: String, mainType: String): Observable<List<String>> {
+        return carTypeLocalDataSource.getBuiltDates(manufacturerCode, mainType)
+    }
+
+    override fun storeBuiltDates(manufacturerCode: String, mainType: String, items: List<String>) {
+        carTypeLocalDataSource.updateBuiltDates(manufacturerCode, mainType, items)
+    }
 }

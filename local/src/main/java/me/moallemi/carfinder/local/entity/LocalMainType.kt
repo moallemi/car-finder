@@ -4,14 +4,17 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
-import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "main_type",
+    primaryKeys = ["name", "manufacturer_code"],
     indices = [
         Index(
-            value = ["manufacturer_code", "name"],
+            value = ["name"],
             unique = true
+        ),
+        Index(
+            value = ["manufacturer_code"]
         )],
     foreignKeys = [
         ForeignKey(
@@ -22,6 +25,5 @@ import androidx.room.PrimaryKey
 )
 data class LocalMainType(
     @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "manufacturer_code") val manufacturerCode: String,
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int? = null
+    @ColumnInfo(name = "manufacturer_code") val manufacturerCode: String
 )
