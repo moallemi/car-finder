@@ -33,4 +33,10 @@ class SharedViewModel @Inject constructor() : BaseViewModel() {
     fun selectBuiltDateItem(builtDateItem: BuiltDateItem) {
         _builtDateItem.value = builtDateItem
     }
+
+    fun clearAllData() {
+        _manufacturerItem.value = null
+        _mainTypeItem.value = null
+        _builtDateItem.value = null
+    }
 }
