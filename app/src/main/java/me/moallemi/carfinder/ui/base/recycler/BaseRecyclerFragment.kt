@@ -32,6 +32,7 @@ abstract class BaseRecyclerFragment<T : RecyclerData, Params, VM : BaseRecyclerV
     private lateinit var loading: ProgressBar
     private lateinit var emptyView: View
     private lateinit var errorView: AppCompatImageView
+    protected open var layoutId: Int = R.layout.fragment_list
 
     private val visibleThreshold: Int = 2
     private var isLoadingMore = false
@@ -58,7 +59,7 @@ abstract class BaseRecyclerFragment<T : RecyclerData, Params, VM : BaseRecyclerV
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        return inflater.inflate(layoutId, container, false)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -181,8 +182,9 @@ abstract class BaseRecyclerFragment<T : RecyclerData, Params, VM : BaseRecyclerV
         showLoadingMore()
     }
 
-    private fun showData(items: List<T>) {
+    protected fun showData(items: List<T>) {
         adapter.items = ArrayList(items)
+        adapter.notifyDataSetChanged()
     }
 
     protected fun showEmptyView() {
@@ -221,7 +223,7 @@ abstract class BaseRecyclerFragment<T : RecyclerData, Params, VM : BaseRecyclerV
         loading.visibility = View.VISIBLE
     }
 
-    private fun hideLoading() {
+    protected fun hideLoading() {
         loading.visibility = View.GONE
     }
 
@@ -230,11 +232,11 @@ abstract class BaseRecyclerFragment<T : RecyclerData, Params, VM : BaseRecyclerV
         addLoadMoreData(MoreItem(State.Loading))
     }
 
-    private fun showRecyclerView() {
+    protected fun showRecyclerView() {
         recyclerView.visibility = View.VISIBLE
     }
 
-    private fun hideRecyclerView() {
+    protected fun hideRecyclerView() {
         recyclerView.visibility = View.GONE
     }
 

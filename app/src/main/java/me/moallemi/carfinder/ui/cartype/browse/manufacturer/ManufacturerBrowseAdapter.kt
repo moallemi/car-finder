@@ -11,7 +11,7 @@ import me.moallemi.carfinder.model.ManufacturerItem
 import me.moallemi.carfinder.ui.base.recycler.BaseRecyclerAdapter
 import me.moallemi.carfinder.ui.base.recycler.BaseRecyclerViewHolder
 
-class ManufacturerListAdapter : BaseRecyclerAdapter<ManufacturerItem>() {
+class ManufacturerBrowseAdapter : BaseRecyclerAdapter<ManufacturerItem>() {
 
     override fun makeViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerViewHolder<ManufacturerItem>? {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)

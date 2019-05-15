@@ -10,12 +10,12 @@ import me.moallemi.carfinder.ui.base.listener.OnRecyclerItemClickListener
 import me.moallemi.carfinder.ui.base.recycler.BaseRecyclerFragment
 
 class ManufacturerBrowseFragment :
-    BaseRecyclerFragment<ManufacturerItem, GetManufacturersUseCase.Params, ManufacturerListViewModel>(),
+    BaseRecyclerFragment<ManufacturerItem, GetManufacturersUseCase.Params, ManufacturerBrowseViewModel>(),
     OnRecyclerItemClickListener<ManufacturerItem> {
 
     private lateinit var sharedViewModel: SharedViewModel
 
-    override val adapter = ManufacturerListAdapter()
+    override val adapter = ManufacturerBrowseAdapter()
 
     init {
         recyclerItemClickListener = this
@@ -27,7 +27,7 @@ class ManufacturerBrowseFragment :
         sharedViewModel = createSharedViewModel()
     }
 
-    override fun makeViewModel(): ManufacturerListViewModel {
+    override fun makeViewModel(): ManufacturerBrowseViewModel {
         return createViewModel(viewModelFactory)
     }
 

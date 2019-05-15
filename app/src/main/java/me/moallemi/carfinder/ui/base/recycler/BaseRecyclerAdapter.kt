@@ -2,6 +2,7 @@ package me.moallemi.carfinder.ui.base.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.moallemi.carfinder.R
 import me.moallemi.carfinder.model.RecyclerData
@@ -9,17 +10,14 @@ import me.moallemi.carfinder.ui.base.listener.OnRecyclerItemClickListener
 import me.moallemi.carfinder.ui.base.listener.TryAgainClickListener
 import me.moallemi.carfinder.ui.base.recycler.loadmore.MoreItem
 import me.moallemi.carfinder.ui.base.recycler.loadmore.MoreViewHolder
+import me.moallemi.carfinder.ui.cartype.search.base.RecyclerDiffUtilCallback
 
 abstract class BaseRecyclerAdapter<T : RecyclerData> : RecyclerView.Adapter<BaseRecyclerViewHolder<T>>() {
 
     var itemClickListener: OnRecyclerItemClickListener<T>? = null
     var tryAgainListener: TryAgainClickListener? = null
 
-    var items: ArrayList<T> = arrayListOf()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+    var items: MutableList<T> = mutableListOf()
 
     protected abstract fun makeViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerViewHolder<T>?
 
@@ -75,5 +73,11 @@ abstract class BaseRecyclerAdapter<T : RecyclerData> : RecyclerView.Adapter<Base
         val lastIndex = items.lastIndex
         items.removeAt(lastIndex)
         notifyItemRemoved(lastIndex)
+    }
+
+    fun update(filteredPosts: List<T>?) {
+        val diffResult = DiffUtil.calculateDiff(RecyclerDiffUtilCallback(items, filteredPosts!!))
+        items = filteredPosts.toMutableList()
+        diffResult.dispatchUpdatesTo(this)
     }
 }

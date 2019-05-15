@@ -1,7 +1,8 @@
 package me.moallemi.carfinder.ui.base.recycler
 
 import android.os.Bundle
-import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import me.moallemi.carfinder.model.RecyclerData
 import me.moallemi.carfinder.model.Resource
 import me.moallemi.carfinder.model.ResourceState.ERROR
@@ -14,8 +15,8 @@ import me.moallemi.carfinder.ui.base.BaseViewModel
 
 abstract class BaseRecyclerViewModel<T : RecyclerData, Params> : BaseViewModel() {
 
-    private val _items: MediatorLiveData<Resource<List<T>>> = MediatorLiveData()
-    val items: MediatorLiveData<Resource<List<T>>> = _items
+    private val _items = MutableLiveData<Resource<List<T>>>()
+    val items: LiveData<Resource<List<T>>> = _items
 
     var allItems: Resource<List<T>>? = null
 
@@ -77,7 +78,7 @@ abstract class BaseRecyclerViewModel<T : RecyclerData, Params> : BaseViewModel()
         super.onRestoreState(bundle)
 
         allItems = bundle.getSerializable(KEY_SAVED_DATA) as Resource<List<T>>?
-        items.value = allItems
+        _items.value = allItems
 
         endOfList = bundle.getBoolean(KEY_SAVED_END_OF_LIST)
     }

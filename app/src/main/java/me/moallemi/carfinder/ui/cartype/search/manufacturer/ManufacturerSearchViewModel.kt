@@ -4,12 +4,12 @@ import me.moallemi.carfinder.domain.interactor.GetAllManufacturersUseCase
 import me.moallemi.carfinder.domain.model.Manufacturer
 import me.moallemi.carfinder.model.ManufacturerItem
 import me.moallemi.carfinder.model.toManufactureItem
-import me.moallemi.carfinder.ui.base.recycler.BaseRecyclerViewModel
+import me.moallemi.carfinder.ui.cartype.search.base.BaseSearchableRecyclerViewModel
 import javax.inject.Inject
 
 class ManufacturerSearchViewModel @Inject constructor(
     private val getAllManufacturersUseCase: GetAllManufacturersUseCase
-) : BaseRecyclerViewModel<ManufacturerItem, GetAllManufacturersUseCase.Params>() {
+) : BaseSearchableRecyclerViewModel<ManufacturerItem, GetAllManufacturersUseCase.Params>() {
 
     init {
         useCases += getAllManufacturersUseCase
@@ -21,6 +21,21 @@ class ManufacturerSearchViewModel @Inject constructor(
             ::success,
             ::error
         )
+    }
+
+    override fun search(query: String, items: List<ManufacturerItem>) {
+        items.filter { manufacturerItem ->
+            manufacturerItem.code.contains(query, ignoreCase = true) ||
+                manufacturerItem.name.contains(query, ignoreCase = true)
+        }.also { result ->
+            handleSearchSuccess(
+                result.mapIndexed { index: Int, manufacturerItem: ManufacturerItem ->
+                    manufacturerItem.apply {
+                        isEven = index % 2 == 0
+                    }
+                }
+            )
+        }
     }
 
     private fun success(result: List<Manufacturer>) {

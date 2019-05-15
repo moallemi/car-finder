@@ -13,7 +13,7 @@ import me.moallemi.carfinder.domain.repository.CarTypeRepository
 import me.moallemi.carfinder.local.datasource.CarTypeLocalDataSourceImpl
 import me.moallemi.carfinder.remote.datasource.CarTypeRemoteDataSourceImpl
 import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerBrowseFragment
-import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerListViewModel
+import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerBrowseViewModel
 import me.moallemi.carfinder.ui.cartype.search.manufacturer.ManufacturerSearchFragment
 import me.moallemi.carfinder.ui.cartype.search.manufacturer.ManufacturerSearchViewModel
 
@@ -25,8 +25,8 @@ abstract class ManufacturerModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ManufacturerListViewModel::class)
-    abstract fun bindManufacturerListViewModel(manufacturerListViewModel: ManufacturerListViewModel): ViewModel
+    @ViewModelKey(ManufacturerBrowseViewModel::class)
+    abstract fun bindManufacturerListViewModel(manufacturerBrowseViewModel: ManufacturerBrowseViewModel): ViewModel
 
     @ContributesAndroidInjector
     internal abstract fun manufacturerSearchFragment(): ManufacturerSearchFragment

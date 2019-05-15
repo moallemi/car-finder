@@ -7,20 +7,19 @@ import me.moallemi.carfinder.extension.createViewModel
 import me.moallemi.carfinder.model.ManufacturerItem
 import me.moallemi.carfinder.ui.SharedViewModel
 import me.moallemi.carfinder.ui.base.listener.OnRecyclerItemClickListener
-import me.moallemi.carfinder.ui.base.recycler.BaseRecyclerFragment
-import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerListAdapter
+import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerBrowseAdapter
+import me.moallemi.carfinder.ui.cartype.search.base.BaseSearchableRecyclerFragment
 
 class ManufacturerSearchFragment :
-    BaseRecyclerFragment<ManufacturerItem, GetAllManufacturersUseCase.Params, ManufacturerSearchViewModel>(),
+    BaseSearchableRecyclerFragment<ManufacturerItem, GetAllManufacturersUseCase.Params, ManufacturerSearchViewModel>(),
     OnRecyclerItemClickListener<ManufacturerItem> {
 
     private lateinit var sharedViewModel: SharedViewModel
 
-    override val adapter = ManufacturerListAdapter()
+    override val adapter = ManufacturerBrowseAdapter()
 
     init {
         recyclerItemClickListener = this
-        isEndless = false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
