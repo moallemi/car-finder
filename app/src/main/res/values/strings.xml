@@ -10,4 +10,8 @@
     <string name="main_type">Main Type</string>
     <string name="built_date">Built Date</string>
     <string name="search">Search...</string>
+    <string name="main_task">Main Task</string>
+    <string name="optional_task">Optional Task</string>
+    <string name="select_car_data_by_pagination">Select car data by pagination</string>
+    <string name="select_car_data_by_search">Select car data by search</string>
 </resources>

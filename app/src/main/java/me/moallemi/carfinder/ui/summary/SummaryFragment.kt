@@ -13,19 +13,26 @@ import me.moallemi.carfinder.extension.observe
 import me.moallemi.carfinder.model.BuiltDateItem
 import me.moallemi.carfinder.model.MainTypeItem
 import me.moallemi.carfinder.model.ManufacturerItem
-import me.moallemi.carfinder.ui.SharedViewModel
 import me.moallemi.carfinder.ui.base.BaseFragment
+import me.moallemi.carfinder.ui.cartype.base.SharedViewModel
 import me.moallemi.carfinder.ui.cartype.browse.builtdate.BuiltDateBrowseFragment
 import me.moallemi.carfinder.ui.cartype.browse.builtdate.BuiltDateBrowseFragmentArgs
 import me.moallemi.carfinder.ui.cartype.browse.maintype.MainTypeBrowseFragment
 import me.moallemi.carfinder.ui.cartype.browse.maintype.MainTypeBrowseFragmentArgs
 import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerBrowseFragment
+import me.moallemi.carfinder.ui.cartype.search.builtdate.BuiltDateSearchFragment
+import me.moallemi.carfinder.ui.cartype.search.maintype.MainTypeSearchFragment
+import me.moallemi.carfinder.ui.cartype.search.manufacturer.ManufacturerSearchFragment
 
 class SummaryFragment : BaseFragment() {
 
     private var manufacturerItem: ManufacturerItem? = null
     private var mainTypeItem: MainTypeItem? = null
     private var builtDateItem: BuiltDateItem? = null
+
+    private val fragmentArgs: SummaryFragmentArgs by lazy {
+        SummaryFragmentArgs.fromBundle(arguments ?: throw IllegalStateException("argument must not be null"))
+    }
 
     private lateinit var sharedViewModel: SharedViewModel
 
@@ -93,29 +100,58 @@ class SummaryFragment : BaseFragment() {
         }
 
         selectManufacturer.setOnClickListener {
-            navigateTo(ManufacturerBrowseFragment.newInstance())
+            if (fragmentArgs.mode == Mode.BROWSE) {
+                navigateTo(ManufacturerBrowseFragment.newInstance())
+            } else {
+                navigateTo(ManufacturerSearchFragment.newInstance())
+            }
         }
         selectMainType.setOnClickListener {
-            navigateTo(
-                MainTypeBrowseFragment.newInstance(
-                    MainTypeBrowseFragmentArgs(manufacturerItem!!.code)
-                )
-            )
-        }
-        selectBuiltDate.setOnClickListener {
-            navigateTo(
-                BuiltDateBrowseFragment.newInstance(
-                    BuiltDateBrowseFragmentArgs(
-                        manufacturerItem!!.code,
-                        mainTypeItem!!.name
+            if (fragmentArgs.mode == Mode.BROWSE) {
+                navigateTo(
+                    MainTypeBrowseFragment.newInstance(
+                        MainTypeBrowseFragmentArgs(manufacturerItem!!.code)
                     )
                 )
-            )
+            } else {
+                navigateTo(
+                    MainTypeSearchFragment.newInstance(
+                        MainTypeBrowseFragmentArgs(manufacturerItem!!.code)
+                    )
+                )
+            }
+        }
+        selectBuiltDate.setOnClickListener {
+            if (fragmentArgs.mode == Mode.BROWSE) {
+                navigateTo(
+                    BuiltDateBrowseFragment.newInstance(
+                        BuiltDateBrowseFragmentArgs(
+                            manufacturerItem!!.code,
+                            mainTypeItem!!.name
+                        )
+                    )
+                )
+            } else {
+                navigateTo(
+                    BuiltDateSearchFragment.newInstance(
+                        BuiltDateBrowseFragmentArgs(
+                            manufacturerItem!!.code,
+                            mainTypeItem!!.name
+                        )
+                    )
+                )
+            }
         }
     }
 
+    enum class Mode {
+        BROWSE, SEARCH
+    }
+
     companion object {
-        fun newInstance() = SummaryFragment()
+        fun newInstance(args: SummaryFragmentArgs) = SummaryFragment().apply {
+            arguments = args.toBundle()
+        }
 
         private const val KEY_MANUFACTURER_DATA = "manufacturerData"
         private const val KEY_MAIN_TYPE_DATA = "mainTypeData"

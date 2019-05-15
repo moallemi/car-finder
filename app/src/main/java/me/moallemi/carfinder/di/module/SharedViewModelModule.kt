@@ -5,7 +5,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import me.moallemi.carfinder.di.annotation.ViewModelKey
-import me.moallemi.carfinder.ui.SharedViewModel
+import me.moallemi.carfinder.ui.cartype.base.SharedViewModel
 
 @Module
 abstract class SharedViewModelModule {

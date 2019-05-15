@@ -1,4 +1,4 @@
-package me.moallemi.carfinder.ui
+package me.moallemi.carfinder.ui.cartype.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

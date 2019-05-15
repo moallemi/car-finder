@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mainTaskHeader"
+        style="@style/FeatureHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main_task"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mainTaskDesc"
+        style="@style/FeatureTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_car_data_by_pagination"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainTaskHeader" />
+
+    <View
+        android:id="@+id/selectMainTask"
+        style="@style/FeatureSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/mainTaskDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/mainTaskHeader" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        style="@style/FeatureArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/selectMainTask"
+        app:layout_constraintEnd_toEndOf="@id/selectMainTask"
+        app:layout_constraintTop_toTopOf="@id/selectMainTask"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/optionalTaskHeader"
+        style="@style/FeatureHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/optional_task"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainTaskDesc" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/optionalTaskDesc"
+        style="@style/FeatureTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_car_data_by_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/optionalTaskHeader" />
+
+    <View
+        android:id="@+id/selectOptionalTask"
+        style="@style/FeatureSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/optionalTaskDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/optionalTaskHeader" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        style="@style/FeatureArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/selectOptionalTask"
+        app:layout_constraintEnd_toEndOf="@id/selectOptionalTask"
+        app:layout_constraintTop_toTopOf="@id/selectOptionalTask"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

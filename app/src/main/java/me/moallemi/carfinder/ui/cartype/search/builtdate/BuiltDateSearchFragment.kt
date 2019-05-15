@@ -5,7 +5,7 @@ import me.moallemi.carfinder.domain.interactor.GetAllBuiltDatesUseCase
 import me.moallemi.carfinder.extension.createSharedViewModel
 import me.moallemi.carfinder.extension.createViewModel
 import me.moallemi.carfinder.model.BuiltDateItem
-import me.moallemi.carfinder.ui.SharedViewModel
+import me.moallemi.carfinder.ui.cartype.base.SharedViewModel
 import me.moallemi.carfinder.ui.base.listener.OnRecyclerItemClickListener
 import me.moallemi.carfinder.ui.cartype.browse.builtdate.BuiltDateBrowseFragmentArgs
 import me.moallemi.carfinder.ui.cartype.browse.builtdate.BuiltDateListAdapter

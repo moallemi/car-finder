@@ -5,7 +5,7 @@ import me.moallemi.carfinder.domain.interactor.GetAllManufacturersUseCase
 import me.moallemi.carfinder.extension.createSharedViewModel
 import me.moallemi.carfinder.extension.createViewModel
 import me.moallemi.carfinder.model.ManufacturerItem
-import me.moallemi.carfinder.ui.SharedViewModel
+import me.moallemi.carfinder.ui.cartype.base.SharedViewModel
 import me.moallemi.carfinder.ui.base.listener.OnRecyclerItemClickListener
 import me.moallemi.carfinder.ui.cartype.browse.manufacturer.ManufacturerBrowseAdapter
 import me.moallemi.carfinder.ui.cartype.search.base.BaseSearchableRecyclerFragment

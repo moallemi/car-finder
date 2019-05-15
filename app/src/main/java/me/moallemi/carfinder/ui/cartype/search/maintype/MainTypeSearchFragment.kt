@@ -5,7 +5,7 @@ import me.moallemi.carfinder.domain.interactor.GetAllMainTypesUseCase
 import me.moallemi.carfinder.extension.createSharedViewModel
 import me.moallemi.carfinder.extension.createViewModel
 import me.moallemi.carfinder.model.MainTypeItem
-import me.moallemi.carfinder.ui.SharedViewModel
+import me.moallemi.carfinder.ui.cartype.base.SharedViewModel
 import me.moallemi.carfinder.ui.base.listener.OnRecyclerItemClickListener
 import me.moallemi.carfinder.ui.cartype.browse.maintype.MainTypeBrowseFragmentArgs
 import me.moallemi.carfinder.ui.cartype.browse.maintype.MainTypeListAdapter
