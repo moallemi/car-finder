@@ -36,6 +36,9 @@ dependencies {
 
     implementation "javax.inject:javax.inject:$libraries.javax_inject"
 
+    testImplementation "junit:junit:$testLibraries.junit"
+    testImplementation "io.mockk:mockk:$testLibraries.mockk"
+
     androidTestImplementation "junit:junit:$testLibraries.junit"
     androidTestImplementation "androidx.test:core:$testLibraries.androidXTestCore"
     androidTestImplementation "androidx.arch.core:core-testing:$testLibraries.androidxCoreTesting"

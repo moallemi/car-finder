@@ -3,17 +3,23 @@ package me.moallemi.carfinder.local.datasource
 import io.reactivex.Observable
 import me.moallemi.carfinder.data.datasource.CarTypeLocalDataSource
 import me.moallemi.carfinder.domain.model.Manufacturer
-import me.moallemi.carfinder.local.db.AppDatabase
+import me.moallemi.carfinder.local.dao.BuiltDateDao
+import me.moallemi.carfinder.local.dao.MainTypeDao
+import me.moallemi.carfinder.local.dao.ManufacturerDao
 import me.moallemi.carfinder.local.entity.LocalBuiltDate
 import me.moallemi.carfinder.local.entity.LocalMainType
 import me.moallemi.carfinder.local.entity.toLocalManufacturer
 import me.moallemi.carfinder.local.entity.toManufacturer
 import javax.inject.Inject
 
-class CarTypeLocalDataSourceImpl @Inject constructor(private val db: AppDatabase) : CarTypeLocalDataSource {
+class CarTypeLocalDataSourceImpl @Inject constructor(
+    private val manufacturerDao: ManufacturerDao,
+    private val mainTypeDao: MainTypeDao,
+    private val builtDateDao: BuiltDateDao
+) : CarTypeLocalDataSource {
 
     override fun getManufacturers(): Observable<List<Manufacturer>> {
-        return db.manufacturerDao().all()
+        return manufacturerDao.all()
             .map { localItems ->
                 localItems.map { localManufacturer ->
                     localManufacturer.toManufacturer()
@@ -22,7 +28,7 @@ class CarTypeLocalDataSourceImpl @Inject constructor(private val db: AppDatabase
     }
 
     override fun updateManufacturers(items: List<Manufacturer>) {
-        db.manufacturerDao().updateAll(
+        manufacturerDao.updateAll(
             *items.map { manufacturer ->
                 manufacturer.toLocalManufacturer()
             }.toTypedArray()
@@ -30,7 +36,7 @@ class CarTypeLocalDataSourceImpl @Inject constructor(private val db: AppDatabase
     }
 
     override fun getMainTypes(manufacturerCode: String): Observable<List<String>> {
-        return db.mainTypeDao().all(manufacturerCode)
+        return mainTypeDao.all(manufacturerCode)
             .map { localItems ->
                 localItems.map { localMainType ->
                     localMainType.name
@@ -39,7 +45,7 @@ class CarTypeLocalDataSourceImpl @Inject constructor(private val db: AppDatabase
     }
 
     override fun updateMainTypes(manufacturerCode: String, items: List<String>) {
-        db.mainTypeDao().updateAll(
+        mainTypeDao.updateAll(
             manufacturerCode,
             *items.map { name ->
                 LocalMainType(name, manufacturerCode)
@@ -48,7 +54,7 @@ class CarTypeLocalDataSourceImpl @Inject constructor(private val db: AppDatabase
     }
 
     override fun getBuiltDates(manufacturerCode: String, mainType: String): Observable<List<String>> {
-        return db.builtDateDao().all(manufacturerCode, mainType)
+        return builtDateDao.all(manufacturerCode, mainType)
             .map { localItems ->
                 localItems.map { localBuiltDate ->
                     localBuiltDate.year
@@ -58,7 +64,7 @@ class CarTypeLocalDataSourceImpl @Inject constructor(private val db: AppDatabase
 
     override fun updateBuiltDates(manufacturerCode: String, mainType: String, items: List<String>) {
         try {
-            db.builtDateDao().insert(
+            builtDateDao.insert(
                 *items.map { year ->
                     LocalBuiltDate(year, manufacturerCode, mainType)
                 }.toTypedArray()
