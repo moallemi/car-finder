@@ -51,6 +51,9 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$libraries.rxAndroid"
 
     testImplementation "junit:junit:$testLibraries.junit"
+    testImplementation "io.mockk:mockk:$testLibraries.mockk"
+    testImplementation "androidx.arch.core:core-testing:$testLibraries.androidxCoreTesting"
+
     androidTestImplementation "androidx.test:runner:$testLibraries.androidXTestRunner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$testLibraries.espresso"
 }
