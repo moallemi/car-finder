@@ -1,6 +1,6 @@
 package me.moallemi.carfinder.ui.cartype.search.builtdate
 
-import me.moallemi.carfinder.domain.interactor.GetAllBuiltDatesUseCase
+import me.moallemi.carfinder.domain.interactor.builtdate.GetAllBuiltDatesUseCase
 import me.moallemi.carfinder.model.BuiltDateItem
 import me.moallemi.carfinder.ui.cartype.search.base.BaseSearchableRecyclerViewModel
 import javax.inject.Inject

@@ -1,7 +1,7 @@
 package me.moallemi.carfinder.ui.cartype.search.maintype
 
 import android.os.Bundle
-import me.moallemi.carfinder.domain.interactor.GetAllMainTypesUseCase
+import me.moallemi.carfinder.domain.interactor.maintype.GetAllMainTypesUseCase
 import me.moallemi.carfinder.extension.createSharedViewModel
 import me.moallemi.carfinder.extension.createViewModel
 import me.moallemi.carfinder.model.MainTypeItem

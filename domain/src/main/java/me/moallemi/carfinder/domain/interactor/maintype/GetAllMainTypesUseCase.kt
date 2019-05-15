@@ -1,4 +1,4 @@
-package me.moallemi.carfinder.domain.interactor
+package me.moallemi.carfinder.domain.interactor.maintype
 
 import io.reactivex.Observable
 import me.moallemi.carfinder.domain.executor.PostExecutorThread

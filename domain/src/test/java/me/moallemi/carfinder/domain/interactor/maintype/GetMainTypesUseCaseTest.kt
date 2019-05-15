@@ -1,4 +1,4 @@
-package me.moallemi.carfinder.domain.interactor
+package me.moallemi.carfinder.domain.interactor.maintype
 
 import io.mockk.clearAllMocks
 import io.mockk.every
@@ -7,18 +7,19 @@ import io.mockk.verify
 import io.reactivex.Single
 import me.moallemi.carfinder.domain.executor.PostExecutorThread
 import me.moallemi.carfinder.domain.executor.UseCaseExecutorThread
+import me.moallemi.carfinder.domain.interactor.CarTypeFactory
 import me.moallemi.carfinder.domain.repository.CarTypeRepository
 import org.junit.Before
 import org.junit.Test
 import java.io.IOException
 
-class GetBuiltDatesUseCaseTest {
+class GetMainTypesUseCaseTest {
 
     private val carTypeRepository: CarTypeRepository = mockk()
     private val useCaseExecutorThread: UseCaseExecutorThread = mockk(relaxed = true)
     private val postExecutorThread: PostExecutorThread = mockk(relaxed = true)
-    private val useCase = GetBuiltDatesUseCase(carTypeRepository, useCaseExecutorThread, postExecutorThread)
-    private val params = GetBuiltDatesUseCase.Params("Kia", "Pride")
+    private val useCase = GetMainTypesUseCase(carTypeRepository, useCaseExecutorThread, postExecutorThread)
+    private val params = GetMainTypesUseCase.Params("107", 0, 10)
 
     @Before
     fun setUp() {
@@ -26,28 +27,28 @@ class GetBuiltDatesUseCaseTest {
     }
 
     @Test
-    fun `getBuiltDates from repository was called`() {
-        mockRepositoryGetBuiltDatesResponse()
+    fun `getMainTypes from repository was called`() {
+        mockRepositoryGetMainTypesResponse()
 
         useCase.execute(params, {}, {})
 
-        verify(exactly = 1) { carTypeRepository.getBuiltDates(any(), any()) }
+        verify(exactly = 1) { carTypeRepository.getMainTypes(any(), any(), any()) }
     }
 
     @Test
-    fun `getBuiltDates when successful`() {
-        mockRepositoryGetBuiltDatesResponse()
+    fun `getMainTypes when successful`() {
+        mockRepositoryGetMainTypesResponse()
 
         useCase.buildSingle(params)
             .test()
             .assertComplete()
             .assertNoErrors()
-            .assertValue(listOf())
+            .assertValue(CarTypeFactory.createMainTypes())
     }
 
     @Test
-    fun `getBuiltDates when fails`() {
-        every { carTypeRepository.getBuiltDates(any(), any()) } returns Single.error(IOException())
+    fun `getMainTypes when fails`() {
+        every { carTypeRepository.getMainTypes(any(), any(), any()) } returns Single.error(IOException())
 
         useCase.buildSingle(params)
             .test()
@@ -55,12 +56,13 @@ class GetBuiltDatesUseCaseTest {
             .assertFailure(IOException::class.java)
     }
 
-    private fun mockRepositoryGetBuiltDatesResponse() {
+    private fun mockRepositoryGetMainTypesResponse() {
         every {
-            carTypeRepository.getBuiltDates(
+            carTypeRepository.getMainTypes(
+                any(),
                 any(),
                 any()
             )
-        } returns Single.just(listOf())
+        } returns Single.just(CarTypeFactory.createMainTypes())
     }
 }

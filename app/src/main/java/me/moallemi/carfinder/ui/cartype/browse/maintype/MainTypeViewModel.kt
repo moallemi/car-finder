@@ -1,6 +1,6 @@
 package me.moallemi.carfinder.ui.cartype.browse.maintype
 
-import me.moallemi.carfinder.domain.interactor.GetMainTypesUseCase
+import me.moallemi.carfinder.domain.interactor.maintype.GetMainTypesUseCase
 import me.moallemi.carfinder.domain.model.StringPagedResult
 import me.moallemi.carfinder.model.MainTypeItem
 import me.moallemi.carfinder.ui.base.recycler.BaseRecyclerViewModel

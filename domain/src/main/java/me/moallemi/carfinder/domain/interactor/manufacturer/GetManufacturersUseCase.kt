@@ -1,26 +1,25 @@
-package me.moallemi.carfinder.domain.interactor
+package me.moallemi.carfinder.domain.interactor.manufacturer
 
 import io.reactivex.Single
 import me.moallemi.carfinder.domain.executor.PostExecutorThread
 import me.moallemi.carfinder.domain.executor.UseCaseExecutorThread
 import me.moallemi.carfinder.domain.interactor.base.SingleUseCase
-import me.moallemi.carfinder.domain.model.StringPagedResult
+import me.moallemi.carfinder.domain.model.ManufacturerPagedResult
 import me.moallemi.carfinder.domain.repository.CarTypeRepository
 import javax.inject.Inject
 
-class GetMainTypesUseCase @Inject constructor(
+class GetManufacturersUseCase @Inject constructor(
     private val carTypeRepository: CarTypeRepository,
     useCaseExecutorThread: UseCaseExecutorThread,
     postExecutorThread: PostExecutorThread
-) : SingleUseCase<GetMainTypesUseCase.Params, StringPagedResult>(useCaseExecutorThread, postExecutorThread) {
+) : SingleUseCase<GetManufacturersUseCase.Params, ManufacturerPagedResult>(useCaseExecutorThread, postExecutorThread) {
 
-    override fun buildSingle(params: Params): Single<StringPagedResult> {
-        return carTypeRepository.getMainTypes(params.manufacturer, params.page, params.pageSize)
+    override fun buildSingle(params: Params): Single<ManufacturerPagedResult> {
+        return carTypeRepository.getManufacturers(params.page, params.pageSize)
     }
 
     data class Params(
-        val manufacturer: String,
         var page: Int,
-        val pageSize: Int
+        var pageSize: Int
     )
 }

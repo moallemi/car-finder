@@ -1,7 +1,7 @@
 package me.moallemi.carfinder.ui.cartype.search.builtdate
 
 import android.os.Bundle
-import me.moallemi.carfinder.domain.interactor.GetAllBuiltDatesUseCase
+import me.moallemi.carfinder.domain.interactor.builtdate.GetAllBuiltDatesUseCase
 import me.moallemi.carfinder.extension.createSharedViewModel
 import me.moallemi.carfinder.extension.createViewModel
 import me.moallemi.carfinder.model.BuiltDateItem

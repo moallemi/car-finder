@@ -1,6 +1,6 @@
 package me.moallemi.carfinder.ui.cartype.search.manufacturer
 
-import me.moallemi.carfinder.domain.interactor.GetAllManufacturersUseCase
+import me.moallemi.carfinder.domain.interactor.manufacturer.GetAllManufacturersUseCase
 import me.moallemi.carfinder.domain.model.Manufacturer
 import me.moallemi.carfinder.model.ManufacturerItem
 import me.moallemi.carfinder.model.toManufactureItem

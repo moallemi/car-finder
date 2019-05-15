@@ -1,7 +1,7 @@
 package me.moallemi.carfinder.ui.cartype.browse.manufacturer
 
 import android.os.Bundle
-import me.moallemi.carfinder.domain.interactor.GetManufacturersUseCase
+import me.moallemi.carfinder.domain.interactor.manufacturer.GetManufacturersUseCase
 import me.moallemi.carfinder.extension.createSharedViewModel
 import me.moallemi.carfinder.extension.createViewModel
 import me.moallemi.carfinder.model.ManufacturerItem

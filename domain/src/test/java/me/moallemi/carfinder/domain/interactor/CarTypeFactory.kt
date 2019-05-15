@@ -9,8 +9,8 @@ object CarTypeFactory {
     fun createManufacturerPagedResult() = ManufacturerPagedResult(
         totalPageCount = 1,
         items = listOf(
-            Manufacturer("101", "BMW"),
-            Manufacturer("102", "Kia")
+            MANUFACTURER_A,
+            MANUFACTURER_B
         )
     )
 
@@ -18,4 +18,12 @@ object CarTypeFactory {
         totalPageCount = 1,
         items = listOf("A", "B", "C")
     )
+
+    fun createManufacturerList() = listOf(MANUFACTURER_A, MANUFACTURER_B)
+
+    val MANUFACTURER_A = Manufacturer("A", "AA")
+    val MANUFACTURER_B = Manufacturer("B", "BB")
+
+    const val MANUFACTURER_CODE = "CODE"
+    const val MAIN_TYPE = "MAIN_TYPE"
 }

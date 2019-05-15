@@ -1,6 +1,6 @@
 package me.moallemi.carfinder.ui.cartype.search.maintype
 
-import me.moallemi.carfinder.domain.interactor.GetAllMainTypesUseCase
+import me.moallemi.carfinder.domain.interactor.maintype.GetAllMainTypesUseCase
 import me.moallemi.carfinder.model.MainTypeItem
 import me.moallemi.carfinder.ui.cartype.search.base.BaseSearchableRecyclerViewModel
 import javax.inject.Inject
