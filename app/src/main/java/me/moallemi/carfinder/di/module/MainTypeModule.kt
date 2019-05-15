@@ -8,6 +8,8 @@ import dagger.multibindings.IntoMap
 import me.moallemi.carfinder.di.annotation.ViewModelKey
 import me.moallemi.carfinder.ui.cartype.browse.maintype.MainTypeBrowseFragment
 import me.moallemi.carfinder.ui.cartype.browse.maintype.MainTypeViewModel
+import me.moallemi.carfinder.ui.cartype.search.maintype.MainTypeSearchFragment
+import me.moallemi.carfinder.ui.cartype.search.maintype.MainTypeSearchViewModel
 
 @Module
 abstract class MainTypeModule {
@@ -18,5 +20,13 @@ abstract class MainTypeModule {
     @Binds
     @IntoMap
     @ViewModelKey(MainTypeViewModel::class)
-    abstract fun bindManufacturerViewModel(mainTypeViewModel: MainTypeViewModel): ViewModel
+    abstract fun bindMainTypeBrowseViewModel(mainTypeViewModel: MainTypeViewModel): ViewModel
+
+    @ContributesAndroidInjector
+    internal abstract fun mainTypeSearchFragment(): MainTypeSearchFragment
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainTypeSearchViewModel::class)
+    abstract fun bindMainTypeSearchViewModel(mainTypeSearchViewModel: MainTypeSearchViewModel): ViewModel
 }

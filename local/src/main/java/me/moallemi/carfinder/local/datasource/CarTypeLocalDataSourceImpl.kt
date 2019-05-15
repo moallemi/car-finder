@@ -4,6 +4,7 @@ import io.reactivex.Observable
 import me.moallemi.carfinder.data.datasource.CarTypeLocalDataSource
 import me.moallemi.carfinder.domain.model.Manufacturer
 import me.moallemi.carfinder.local.db.AppDatabase
+import me.moallemi.carfinder.local.entity.LocalMainType
 import me.moallemi.carfinder.local.entity.toLocalManufacturer
 import me.moallemi.carfinder.local.entity.toManufacturer
 import javax.inject.Inject
@@ -11,17 +12,36 @@ import javax.inject.Inject
 class CarTypeLocalDataSourceImpl @Inject constructor(private val db: AppDatabase) : CarTypeLocalDataSource {
 
     override fun getManufacturers(): Observable<List<Manufacturer>> {
-        return db.manufacturerDao().all().map { localItems ->
-            localItems.map { localManufacturer ->
-                localManufacturer.toManufacturer()
+        return db.manufacturerDao().all()
+            .map { localItems ->
+                localItems.map { localManufacturer ->
+                    localManufacturer.toManufacturer()
+                }
             }
-        }
     }
 
     override fun updateManufacturers(items: List<Manufacturer>) {
         db.manufacturerDao().updateAll(
             *items.map { manufacturer ->
                 manufacturer.toLocalManufacturer()
+            }.toTypedArray()
+        )
+    }
+
+    override fun getMainTypes(manufacturerCode: String): Observable<List<String>> {
+        return db.mainTypeDao().all(manufacturerCode)
+            .map { localItems ->
+                localItems.map { localMainType ->
+                    localMainType.name
+                }
+            }
+    }
+
+    override fun updateMainTypes(manufacturerCode: String, items: List<String>) {
+        db.mainTypeDao().updateAll(
+            manufacturerCode,
+            *items.map { name ->
+                LocalMainType(name, manufacturerCode)
             }.toTypedArray()
         )
     }
